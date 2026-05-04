@@ -19,12 +19,17 @@ core.*
 extracted/
 _extracted/
 
-# --- Binaires & objets ---
+# --- Binaires & objets (interdits par 42 dans le rendu) ---
 *.o
 *.a
 *.so
 *.exe
+*.elf
 a.out
+# Binaires Snowcrash rapatriés depuis la VM
+level??
+flag??
+getflag
 
 # --- Éditeurs / OS ---
 .vscode/

@@ -6,6 +6,7 @@ Projet de sécurité offensive de l'école 42, format CTF. ~14 niveaux à encha�
 
 - **Rendu 42** : un dossier par niveau avec writeup + exploit reproductible.
 - **Aucun password en clair commité** (correction = 0 / -42 si fuite).
+- **Aucun binaire dans le rendu** (règle 42). Les binaires rapatriés depuis la VM pour analyse vivent uniquement dans `notes_perso/` (gitignored).
 - Repo potentiellement public un jour → zéro spoiler dans les fichiers trackés.
 - Connexion VM en SSH, le password de `level00` est fourni par l'école.
 
@@ -90,6 +91,7 @@ sshpass -p "$(cat notes_perso/passwords.txt | grep ^levelXX | cut -d= -f2)" ssh 
 - Pour les writeups : tu peux les rédiger, mais relis-toi pour vérifier qu'aucun password ne traîne. Référence-les comme `<PASSWORD_LEVELN+1>`.
 - Ne jamais suggérer `git add .` ou `git add -A` sur ce repo — toujours add fichier par fichier (risque de leak via fichiers oubliés).
 - Si tu vois un fichier qui ressemble à un dump ou un password, **alerte-moi avant de le lire en entier** dans la conversation.
+- Si je veux ajouter au repo un fichier qui ressemble à un binaire ELF (sans extension, taille > quelques Ko, magic bytes `\x7fELF`), **bloque-moi** et propose de le déplacer dans `notes_perso/` — règle 42 : aucun binaire dans le rendu.
 
 ## 6. Glossaire rapide
 
