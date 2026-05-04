@@ -105,7 +105,41 @@ sshpass -p "$(cat notes_perso/passwords.txt | grep ^levelXX | cut -d= -f2)" ssh 
 - **Race condition / TOCTOU** : exploiter la fenêtre entre check et use d'un fichier.
 - **Path injection** : manipuler `$PATH` ou `$IFS` pour qu'un script SUID exécute mon binaire.
 
-## 7. Progression
+## 7. Workflow VM ↔ machine locale
+
+La VM est minimaliste (peu d'outils, éditeurs basiques) et `/tmp` / `/var/tmp` sont resettés. Ne jamais bosser directement dessus.
+
+**Cycle standard** :
+1. SSH dans la VM uniquement pour la **recon** et l'**exécution finale** de l'exploit.
+2. Récupérer les binaires/sources à analyser **chez soi** avec `scp`.
+3. Reverse / dev de l'exploit en local dans `notes_perso/levelXX/` (Ghidra, gdb, IDE).
+4. Renvoyer l'exploit prêt sur la VM avec `scp`, l'exécuter via SSH, capturer le token.
+5. Rédiger walkthrough propre dans `levelXX/` (sans password).
+
+**Commandes scp clés** :
+```sh
+# Download : VM → local
+scp levelXX@<vm-ip>:/chemin/sur/vm ./notes_perso/levelXX/
+
+# Upload : local → VM (vers /tmp car writable)
+scp ./exploit.sh levelXX@<vm-ip>:/tmp/
+
+# Récursif (dossier entier)
+scp -r levelXX@<vm-ip>:/home/levelXX/sources ./notes_perso/levelXX/
+
+# Port SSH non-standard
+scp -P <port> ...
+```
+
+**Setup recommandé `~/.ssh/config`** pour aliaser chaque niveau :
+```
+Host snowXX
+    HostName <vm-ip>
+    User levelXX
+```
+→ `ssh snow03` et `scp ./e.sh snow03:/tmp/` au lieu de retaper user@ip à chaque fois.
+
+## 8. Progression
 
 | Niveau   | Statut | Technique principale | Date |
 |----------|--------|----------------------|------|
