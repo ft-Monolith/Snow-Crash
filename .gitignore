@@ -1,0 +1,41 @@
+# --- Secrets : NE JAMAIS commiter ---
+notes_perso/
+passwords*
+*.password
+*.flag
+flag_*
+*.secret
+*.key
+.env
+.env.*
+
+# --- Dumps & artefacts d'analyse ---
+*.pcap
+*.pcapng
+*.dump
+*.core
+core.*
+*.bin.bak
+extracted/
+_extracted/
+
+# --- Binaires & objets ---
+*.o
+*.a
+*.so
+*.exe
+a.out
+
+# --- Éditeurs / OS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- Logs / temporaire ---
+*.log
+tmp/
+scratch/
