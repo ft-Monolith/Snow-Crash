@@ -4,11 +4,14 @@ Projet de sécurité offensive de l'école 42, format CTF. ~14 niveaux à encha�
 
 ## 1. Contexte projet
 
-- **Rendu 42** : un dossier par niveau avec writeup + exploit reproductible.
-- **Aucun password en clair commité** (correction = 0 / -42 si fuite).
+- **Rendu 42 (V3.2)** : 10 niveaux mandatory (`level00` → `level09`) + 5 bonus (`level10` → `level14`). Bonus comptent **uniquement si mandatory PARFAIT**.
+- **Structure imposée par le sujet** : chaque `levelXX/` contient un fichier `flag` (le token de `getflag`) et un dossier `resources/` (tout ce qui prouve la résolution).
+- **Le fichier `levelXX/flag` EST destiné à recevoir le token** (peut être vide, mais alors justifier en éval). C'est l'**unique exception** à la règle no-password.
+- **Aucun autre password en clair** ailleurs (walkthrough, exploit hardcodé, commit message).
 - **Aucun binaire dans le rendu** (règle 42). Les binaires rapatriés depuis la VM pour analyse vivent uniquement dans `notes_perso/` (gitignored).
-- Repo potentiellement public un jour → zéro spoiler dans les fichiers trackés.
-- Connexion VM en SSH, le password de `level00` est fourni par l'école.
+- **Brute-force SSH interdit** par le sujet.
+- Repo **à garder privé** (les flags committés = compromission du projet pour les autres si public).
+- Connexion VM : `ssh level00@<vm-ip> -p 4242`, password initial `level00`.
 
 ## 2. Structure de rendu
 
