@@ -13,25 +13,35 @@ Projet de sécurité offensive de l'école 42, format CTF. ~14 niveaux à encha�
 - Repo **à garder privé** (les flags committés = compromission du projet pour les autres si public).
 - Connexion VM : `ssh level00@<vm-ip> -p 4242`, password initial `level00`.
 
-## 2. Structure de rendu
+## 2. Structure de rendu (imposée par le sujet)
 
 ```
 .
 ├── CLAUDE.md
 ├── .gitignore
+├── en.subject.pdf
 ├── level00/
-│   ├── walkthrough.md      # raisonnement, sans le password final
-│   └── exploit.sh          # script reproductible, lit le password depuis stdin/env
+│   ├── flag                    # token retourné par getflag (= password de level01)
+│   └── resources/              # tout ce qui prouve / reproduit la résolution
+│       ├── walkthrough.md      # démarche, vuln identifiée, commandes
+│       ├── exploit.sh          # script reproductible (sans password hardcodé)
+│       └── ...                 # sources, screenshots, notes complémentaires
 ├── level01/
-│   └── ...
-└── notes_perso/            # IGNORÉ par git — passwords, dumps, brouillons
+│   ├── flag
+│   └── resources/
+...
+├── level14/                    # dernier bonus
+│   ├── flag
+│   └── resources/
+└── notes_perso/                # IGNORÉ par git — binaires VM, dumps, brouillons
     └── passwords.txt
 ```
 
 Conventions :
-- `walkthrough.md` = démarche, vuln identifiée, commandes utilisées. Le password final est référencé comme `<PASSWORD_LEVELN+1>`.
-- `exploit.sh` = doit s'exécuter tel quel sur la VM, ne contient aucun secret en dur.
-- Tous les passwords vivent uniquement dans `notes_perso/passwords.txt` (gitignored).
+- `levelXX/flag` = **uniquement** le token brut retourné par `getflag` (rien d'autre, pas de prose).
+- `walkthrough.md` = démarche complète. Référence le password obtenu comme `<TOKEN>` ou pointe vers `../flag`, ne le réécris pas.
+- `exploit.sh` = script reproductible. Lit les credentials depuis env / argv / stdin, jamais en dur.
+- Tout artefact non commitable (binaires rapatriés, dumps lourds, brouillons) → `notes_perso/`.
 
 ## 3. Méthodologie par niveau (checklist)
 
@@ -87,7 +97,7 @@ sshpass -p "$(cat notes_perso/passwords.txt | grep ^levelXX | cut -d= -f2)" ssh 
 
 ## 5. Règles pour Claude (toi)
 
-- **JAMAIS** écrire un password trouvé dans un fichier commité (CLAUDE.md, walkthrough, exploit, commit message). Si je te le donne, garde-le en mémoire de session uniquement et propose de l'écrire dans `notes_perso/passwords.txt`.
+- Le **seul endroit** où un password/token peut apparaître dans le repo est `levelXX/flag` (exigence du sujet). Partout ailleurs (CLAUDE.md, walkthrough.md, exploit.sh, commit message) → **JAMAIS de password en clair**. Référence-le comme `<TOKEN>` ou pointe vers `../flag`.
 - Si je te montre la sortie d'un binaire ou un dump, **aide-moi à raisonner sur la vuln** — n'essaie pas de deviner le flag à ma place.
 - Privilégie expliquer la **technique** (format string, BoF, race condition, ret2libc, command injection, path traversal, etc.) plutôt que livrer la réponse. Je suis là pour apprendre.
 - Quand je bloque, propose **2-3 pistes ordonnées par probabilité** avant de creuser une seule.
@@ -146,9 +156,29 @@ Host snowXX
 
 ## 8. Progression
 
+**Mandatory** (10) :
+
 | Niveau   | Statut | Technique principale | Date |
 |----------|--------|----------------------|------|
 | level00  |        |                      |      |
 | level01  |        |                      |      |
+| level02  |        |                      |      |
+| level03  |        |                      |      |
+| level04  |        |                      |      |
+| level05  |        |                      |      |
+| level06  |        |                      |      |
+| level07  |        |                      |      |
+| level08  |        |                      |      |
+| level09  |        |                      |      |
 
-*(à remplir au fur et à mesure — pas de détails de vuln ici, garde-les dans `notes_perso/`)*
+**Bonus** (5, comptent uniquement si mandatory PARFAIT) :
+
+| Niveau   | Statut | Technique principale | Date |
+|----------|--------|----------------------|------|
+| level10  |        |                      |      |
+| level11  |        |                      |      |
+| level12  |        |                      |      |
+| level13  |        |                      |      |
+| level14  |        |                      |      |
+
+*(pas de détails de vuln ici — garde-les dans `notes_perso/levelXX/` puis transfère le walkthrough propre dans `levelXX/resources/walkthrough.md`)*
