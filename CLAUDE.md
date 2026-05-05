@@ -165,7 +165,7 @@ Host snowXX
 | level01  | ✅     |                      |      |
 | level02  | ✅     | Analyse PCAP / Telnet en clair | 2026-05-05 |
 | level03  | ✅     | SUID + Path Injection | 2026-05-05 |
-| level04  |        |                      |      |
+| level04  | ✅     | Command Injection (CGI Perl) | 2026-05-05 |
 | level05  |        |                      |      |
 | level06  |        |                      |      |
 | level07  |        |                      |      |
