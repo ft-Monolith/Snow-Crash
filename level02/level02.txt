@@ -1,0 +1,60 @@
+cat level02.pcap 
+�ò�@f&N.J'̊$E<��@@J>;���;��ߙO/Y������
+ @f&N�JJ$E<@@�/;���;���/Y�O���A� 8����
+�.� @f&N�B'̊$E4��@@JE;���;��ߙO/Y�º��B�sp
+ �.�@f&N֡EE$E7ԣ@@�;���;���/Y�O���B���
+
+copy the file on main 
+
+scp -P 4242 level02@10.14.200.161:~/level02.pcap ~/Documents/
+
+convert the nats to strings
+
+chmod 644 ~/Documents/level02.pcap
+strings ~/Documents/level02.pcap
+
+&N
+;NXMf&N
+XMf&N
+Nf&N
+Nf&N
+Nf&N
+<bNf&N
+Password: Nf&Nat
+<bVf&N
+<bfVf&ND
+Wf&N
+tWf&N
+
+
+➜  run git:(bleeding-jumbo) python3 -c "
+from scapy.all import *
+packets = rdpcap('/home/fprevot/Documents/level02.pcap')
+for p in packets:
+    if p.haslayer('Raw') and p.haslayer('TCP'):
+        payload = p['Raw'].load
+        # filtre paquets d'une seule lettre (frappe clavier)
+        if len(payload) == 1:
+            b = payload[0]
+            if b == 0x7f:  # backspace
+                print('<DEL>', end='')
+            elif 32 <= b <= 126:
+                print(chr(b), end='')
+print()
+"
+levelXft_wandr<DEL><DEL><DEL>NDRel<DEL>L0L
+
+remove unnescessary 
+levelx is login so ft_wandr<DEL><DEL><DEL>NDRel<DEL>L0L del 3 time 
+ft_waNDRel<DEL>L0L and del 1 time ft_waNDReL0L
+
+mdp = ft_waNDReL0L
+
+su flag02 
+password = ft_waNDReL0L
+
+getflag
+Check flag.Here is your token : kooda2puivaav1idi4f57q8iq
+
+su level03
+password = kooda2puivaav1idi4f57q8iq 
