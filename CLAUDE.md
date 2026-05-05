@@ -167,8 +167,8 @@ Host snowXX
 | level03  | ✅     | SUID + Path Injection | 2026-05-05 |
 | level04  | ✅     | Command Injection (CGI Perl) | 2026-05-05 |
 | level05  | ✅     | Cron Job + écriture dossier surveillé | 2026-05-05 |
-| level06  |        |                      |      |
-| level07  |        |                      |      |
+| level06  | ✅     | PHP preg_replace /e (Code Injection) | 2026-05-05 |
+| level07  | ✅     | SUID + Command Injection via env var | 2026-05-05 |
 | level08  |        |                      |      |
 | level09  |        |                      |      |
 
