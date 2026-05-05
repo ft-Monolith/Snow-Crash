@@ -169,7 +169,7 @@ Host snowXX
 | level05  | ✅     | Cron Job + écriture dossier surveillé | 2026-05-05 |
 | level06  | ✅     | PHP preg_replace /e (Code Injection) | 2026-05-05 |
 | level07  | ✅     | SUID + Command Injection via env var | 2026-05-05 |
-| level08  |        |                      |      |
+| level08  | ✅     | Bypass filtre strstr par lien symbolique | 2026-05-05 |
 | level09  |        |                      |      |
 
 **Bonus** (5, comptent uniquement si mandatory PARFAIT) :
