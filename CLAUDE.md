@@ -50,6 +50,7 @@ Reconnaissance systématique avant tout :
 id                                          # mes UID/GID
 ls -la ~ /tmp /var/tmp                      # fichiers visibles
 getfacl .                                   # ACLs cachées
+cat /etc/passwd | grep flagN                # hash en clair ? (vieux systèmes sans shadow)
 find / -user flagN 2>/dev/null              # fichiers du flag
 find / -perm -u=s -type f 2>/dev/null       # binaires SUID
 find / -group levelN 2>/dev/null            # ressources accessibles

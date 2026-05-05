@@ -1,1 +1,43 @@
+# --- Secrets : NE JAMAIS commiter ---
+notes_perso/
+passwords*
+*.password
+*.flag
+flag_*
+*.secret
+*.key
+.env
+.env.*
 
+# --- Dumps & artefacts d'analyse ---
+*.pcap
+*.pcapng
+*.dump
+*.core
+core.*
+*.bin.bak
+extracted/
+_extracted/
+
+# --- Binaires & objets (interdits par 42 dans le rendu) ---
+*.o
+*.a
+*.so
+*.exe
+*.elf
+a.out
+# Binaires Snowcrash rapatriés depuis la VM → vont dans notes_perso/ (déjà ignoré)
+
+# --- Éditeurs / OS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- Logs / temporaire ---
+*.log
+tmp/
+scratch/
