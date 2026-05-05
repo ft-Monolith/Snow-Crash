@@ -177,7 +177,7 @@ Host snowXX
 | Niveau   | Statut | Technique principale | Date |
 |----------|--------|----------------------|------|
 | level10  | ✅     | Race condition TOCTOU (access vs open) | 2026-05-05 |
-| level11  |        |                      |      |
+| level11  | ✅     | Command Injection via Lua io.popen | 2026-05-06 |
 | level12  |        |                      |      |
 | level13  |        |                      |      |
 | level14  |        |                      |      |
