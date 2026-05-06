@@ -167,18 +167,18 @@ Host snowXX
 | level03  | ✅     | SUID + Path Injection | 2026-05-05 |
 | level04  | ✅     | Command Injection (CGI Perl) | 2026-05-05 |
 | level05  | ✅     | Cron Job + écriture dossier surveillé | 2026-05-05 |
-| level06  |        |                      |      |
-| level07  |        |                      |      |
-| level08  |        |                      |      |
-| level09  |        |                      |      |
+| level06  | ✅     | PHP preg_replace /e (Code Injection) | 2026-05-05 |
+| level07  | ✅     | SUID + Command Injection via env var | 2026-05-05 |
+| level08  | ✅     | Bypass filtre strstr par lien symbolique | 2026-05-05 |
+| level09  | ✅     | Décodage encodage positionnel (index+ASCII) | 2026-05-05 |
 
 **Bonus** (5, comptent uniquement si mandatory PARFAIT) :
 
 | Niveau   | Statut | Technique principale | Date |
 |----------|--------|----------------------|------|
-| level10  |        |                      |      |
-| level11  |        |                      |      |
-| level12  |        |                      |      |
+| level10  | ✅     | Race condition TOCTOU (access vs open) | 2026-05-05 |
+| level11  | ✅     | Command Injection via Lua io.popen | 2026-05-06 |
+| level12  | ✅     | Command Injection CGI Perl + glob uppercase bypass | 2026-05-06 |
 | level13  |        |                      |      |
 | level14  |        |                      |      |
 
