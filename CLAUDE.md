@@ -180,6 +180,6 @@ Host snowXX
 | level11  | ✅     | Command Injection via Lua io.popen | 2026-05-06 |
 | level12  | ✅     | Command Injection CGI Perl + glob uppercase bypass | 2026-05-06 |
 | level13  | ✅     | UID Spoofing via GDB (bypass LD_PRELOAD SUID) | 2026-05-06 |
-| level14  |        |                      |      |
+| level14  | ✅     | GDB bypass ptrace anti-debug + UID spoofing | 2026-05-06 |
 
 *(pas de détails de vuln ici — garde-les dans `notes_perso/levelXX/` puis transfère le walkthrough propre dans `levelXX/resources/walkthrough.md`)*
