@@ -178,7 +178,7 @@ Host snowXX
 |----------|--------|----------------------|------|
 | level10  | ✅     | Race condition TOCTOU (access vs open) | 2026-05-05 |
 | level11  | ✅     | Command Injection via Lua io.popen | 2026-05-06 |
-| level12  |        |                      |      |
+| level12  | ✅     | Command Injection CGI Perl + glob uppercase bypass | 2026-05-06 |
 | level13  |        |                      |      |
 | level14  |        |                      |      |
 
