@@ -60,3 +60,33 @@ Le token apparaît dans le message d'erreur car `getflag` s'est exécuté avec l
 ## Token
 
 Voir `../flag`.
+
+
+
+
+# --- Version lisible (équivalente fonctionnellement) ---
+<?php
+// y() : remplace simplement les '.' par ' x ' et les '@' par ' y'
+function transform($texte) {
+    $texte = preg_replace("/\./", " x ", $texte);
+    $texte = preg_replace("/@/",  " y",  $texte);
+    return $texte;
+}
+
+// x() : lit un fichier et applique 3 substitutions
+function process_fichier($chemin, $arg2_inutilise) {
+    $contenu = file_get_contents($chemin);
+
+    // /!\ Vulnérable : le modifier /e fait EXÉCUTER le 2e argument comme du PHP.
+    // Pour chaque match "[x ...]", PHP évalue : transform("...")
+    // -> tout ce qu'on met dans "..." est interprété (ex: ${`cmd`} = exécution shell).
+    $contenu = preg_replace("/(\[x (.*)\])/e", "transform(\"\\2\")", $contenu);
+
+    // Cosmétique : remplace les crochets restants par des parenthèses
+    $contenu = preg_replace("/\[/", "(", $contenu);
+    $contenu = preg_replace("/\]/", ")", $contenu);
+
+    return $contenu;
+}
+$resultat = process_fichier($argv[1], $argv[2]);
+print $resultat;

