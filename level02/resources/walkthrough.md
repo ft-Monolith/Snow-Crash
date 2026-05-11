@@ -18,10 +18,39 @@ file level02.pcap
 
 Quelqu'un s'est connecté et a tapé un password — il est dans les paquets.
 
-## Extraction du password
+## Étape 1 — Récupérer le fichier depuis la VM
 
-En Telnet, chaque touche est envoyée dans un paquet TCP séparé (`length 1`).
-On analyse le flux avec Wireshark → clic droit sur un paquet → **Follow > TCP Stream** → **Hex Dump**.
+Depuis ta **machine locale** (pas depuis la VM), on copie le `.pcap` avec `scp` :
+
+```sh
+scp -P 4242 level02@<vm-ip>:~/level02.pcap ./notes_perso/level02/level02.pcap
+```
+
+Le fichier est maintenant en local, prêt à être ouvert.
+
+## Étape 2 — Lancer Wireshark
+
+```sh
+wireshark ./notes_perso/level02/level02.pcap
+```
+
+Si Wireshark n'est pas installé :
+
+```sh
+sudo apt install wireshark
+```
+
+Wireshark s'ouvre directement sur la liste des paquets de la capture.
+
+## Étape 3 — Suivre le flux TCP (TCP Stream)
+
+1. Clic droit sur n'importe quel paquet Telnet dans la liste
+2. **Follow > TCP Stream**
+3. En haut à droite, passer l'affichage en **Hex Dump**
+
+On voit le dialogue complet : le serveur envoie les prompts (`login:`, `Password:`), le client répond paquet par paquet (une touche = un paquet TCP de `length 1`).
+
+## Étape 4 — Décoder les frappes
 
 Après le prompt `Password:`, les octets envoyés par le client sont :
 
