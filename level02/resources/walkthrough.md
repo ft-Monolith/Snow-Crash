@@ -23,28 +23,41 @@ Révèle une session **Telnet** avec les marqueurs clés :
 
 Quelqu'un s'est connecté en Telnet et a tapé un password — Telnet transmet tout en clair, donc les frappes sont dans les paquets.
 
-## Extraction du flux TCP
+## Étape 1 — Récupérer le fichier depuis la VM
 
-En Telnet, chaque touche est envoyée dans un paquet TCP séparé (`length 1`). On extrait le flux en hex avec `tshark` (équivalent CLI de Wireshark) :
+Depuis ta **machine locale** (pas depuis la VM), on copie le `.pcap` avec `scp` :
 
 ```sh
-tshark -r level02.pcap -q -z follow,tcp,raw,0
+scp -P 4242 level02@<vm-ip>:~/level02.pcap ./notes_perso/level02/level02.pcap
 ```
 
-Décomposition de la commande :
-- `-r level02.pcap` : lit depuis le pcap au lieu de capturer en live
-- `-q` : silence le résumé paquet-par-paquet (sans ça, bruit énorme)
-- `-z follow,tcp,raw,0` : produit le rapport "Follow TCP Stream"
-  - `follow` : type de rapport = suivre un flux
-  - `tcp` : protocole
-  - `raw` : format hex brut (préserve les bytes non-imprimables comme `0x7f`)
-  - `0` : numéro du stream (le premier — vu qu'il n'y en a qu'un ici)
+Le fichier est maintenant en local, prêt à être ouvert.
 
-Dans la sortie : lignes **non indentées** = client → serveur (les frappes), **indentées** = serveur → client.
+## Étape 2 — Lancer Wireshark
 
-## Reconstitution du password
+```sh
+wireshark ./notes_perso/level02/level02.pcap
+```
 
-Après l'envoi du prompt serveur `Password:` (`50 61 73 73 77 6f 72 64 3a 20`), le client envoie ses frappes octet par octet jusqu'au `0x0d` (Entrée). La séquence mélange trois types de bytes :
+Si Wireshark n'est pas installé :
+
+```sh
+sudo apt install wireshark
+```
+
+Wireshark s'ouvre directement sur la liste des paquets de la capture.
+
+## Étape 3 — Suivre le flux TCP (TCP Stream)
+
+1. Clic droit sur n'importe quel paquet Telnet dans la liste
+2. **Follow > TCP Stream**
+3. En haut à droite, passer l'affichage en **Hex Dump**
+
+On voit le dialogue complet : le serveur envoie les prompts (`login:`, `Password:`), le client répond paquet par paquet (une touche = un paquet TCP de `length 1`).
+
+## Étape 4 — Décoder les frappes
+
+Après le prompt `Password:`, les octets envoyés par le client sont :
 
 | Catégorie | Hex | Sens |
 |-----------|-----|------|
