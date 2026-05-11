@@ -21,7 +21,6 @@ Crack hors ligne avec john :
 echo "flag01:42hDRfypTqqnw" > /tmp/level01.txt
 john /tmp/level01.txt
 john --show /tmp/level01.txt
-# → abcdefg
 ```
 
 ```sh
