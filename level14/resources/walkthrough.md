@@ -15,6 +15,8 @@ ltrace getflag
 
 ## Vulnérabilités
 
+id flag12
+
 1. **Anti-debug bypassable** : le check `ptrace` se fait en lisant la valeur de retour dans `eax` — on peut la falsifier depuis GDB.
 2. **UID check bypassable** : comme level13, `getflag` appelle `getuid()` et compare le résultat — on force le retour à l'UID de `flag14` (3014).
 

